@@ -54,9 +54,7 @@
         - "Tenant:             {{ item.name }}"
         - "ID:                 {{ item.id }}"
         - "Capabilities:       {{ item.capabilities }}"
-        - "Policy:             Platform Services: {{ item.policy.allowPlatformServices }}, \
-                               Quota: {{ ((item.policy.quotaObjectBytes / 1000 | pow(3)) | int) if item.policy.quotaObjectBytes != none else '--' }} GB, \
-                               Use Identity Source: {{ item.policy.useAccountIdentitySource }}"
+        - "Policy:             {{ item.policy }}"
     with_items:
       - "{{ grid_tenants.sg_info['grid/accounts'].data }}"
     loop_control:
